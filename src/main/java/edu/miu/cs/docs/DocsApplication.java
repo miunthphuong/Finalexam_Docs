@@ -7,7 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DocsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DocsApplication.class, args);
+        try {
+            SpringApplication.run(DocsApplication.class, args);
+        } catch (Throwable t) {
+            // Print full stacktrace to help diagnose BeanCreationException on startup
+            t.printStackTrace(System.err);
+            throw t;
+        }
     }
 
 }
