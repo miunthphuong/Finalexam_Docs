@@ -45,7 +45,14 @@ async function load() {
 document.getElementById('regForm').addEventListener('submit', async e => {
   e.preventDefault();
   const payload = {
-    studentId: document.getElementById('studentId').value || null,
+    // parse studentId as number or null
+    studentId: (() => {
+      const v = document.getElementById('studentId').value;
+      if (!v) return null;
+      const n = Number(v);
+      if (Number.isNaN(n)) return null;
+      return Math.trunc(n);
+    })(),
     matricNumber: document.getElementById('matricNumber').value,
     firstName: document.getElementById('firstName').value,
     lastName: document.getElementById('lastName').value,
