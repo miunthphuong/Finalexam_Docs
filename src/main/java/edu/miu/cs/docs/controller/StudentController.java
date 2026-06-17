@@ -1,4 +1,4 @@
-package edu.miu.cs.docs;
+package edu.miu.cs.docs.controller;
 
 import edu.miu.cs.docs.dto.RegistrationRequest;
 import edu.miu.cs.docs.dto.StudentDTO;
