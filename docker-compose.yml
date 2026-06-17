@@ -19,5 +19,17 @@ services:
       timeout: 5s
       retries: 5
 
+  app:
+    build: .
+    container_name: docs-app
+    depends_on:
+      - db
+    environment:
+      - JDBC_USER=test
+      - JDBC_PASSWORD=test
+      - JDBC_URL=jdbc:mysql://db:3306/docsdb?useSSL=false&serverTimezone=UTC
+    ports:
+      - "8080:8080"
+
 volumes:
   db_data:
